@@ -1,0 +1,6 @@
+user www www;  ## Not specifically used in unprivileged mode
+
+error_log logs/error.log;
+# The pidfile needs to be somewhere the master process owner can access
+#  Relocating from /var/run can cause scripts to fail when attempting to stop the service
+pid       logs/nginx.pid;
