@@ -1,0 +1,7 @@
+worker_processes     4;  ## Set to number of CPUs
+worker_rlimit_nofile 8192;  ## Not sure how to set this
+
+events {
+  worker_connections 2048;
+  multi_accept       on;
+}
