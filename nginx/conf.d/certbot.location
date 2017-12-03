@@ -1,0 +1,14 @@
+# If certbot is issuing a challenge then respond from certbot.my.site
+location /.well-known/acme-challenge/ {
+
+  # I want errors with the redirect to look like a 404
+  error_page 500 502 504 =404 /404.html;
+
+  # If passing a domain name you need a resolver
+  # To prevent spoofing you should use a trusted resolver
+  resolver   127.0.0.1;  ##! Use bind and /etc/hosts to find certbot.my.site
+
+  # Pass to certbot
+  proxy_pass $scheme://certbot.my.site$request_uri;  ##!
+
+}
